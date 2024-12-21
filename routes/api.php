@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculadoraController;
+use App\Http\Controllers\ContadorController;
 
 
 
@@ -22,7 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/calculadora/calcular', [CalculadoraController::class,'calcular']);
-Route::post('/calculadora/somar', [CalculadoraController::class,'somar']);
-Route::post('/calculadora/subtrair', [CalculadoraController::class,'subtrair']);
-Route::post('/calculadora/multiplicar', [CalculadoraController::class,'multiplicar']);
-Route::post('/calculadora/dividir', [CalculadoraController::class,'dividir']);
+Route::post('/contador/contarDeAte', [ContadorController::class,'contarDeAte']);
