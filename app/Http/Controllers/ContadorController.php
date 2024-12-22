@@ -16,7 +16,22 @@ class ContadorController extends Controller
         for($x = $numeroDe; $x <= $numeroAte; $x++){
             $numerosContados = $numerosContados . $x . ',';
         };
+
+        static::guardarNoBanco($request);
         return response($numerosContados, 200);
 
+    }
+
+    private static function guardarNoBanco($request){
+        //salvando no bd
+        $contadora = new Contador();
+        $contadora->numero_de = $request->numeroDe;
+        $contadora->numero_ate = $request->numeroAte;
+        $contadora->numeros_contados = $request->numerosContados;
+        $contadora->created_by = 1;
+
+        $contadora->save();
+
+        return $contadora;
     }
 }
