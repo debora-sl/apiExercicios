@@ -2,8 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CalculadoraController;
 use App\Http\Controllers\ContadorController;
+use App\Http\Controllers\CalculadoraImcController;
 
 
 
@@ -23,4 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/calculadora/calcular', [CalculadoraController::class,'calcular']);
+
 Route::post('/contador/contarDeAte', [ContadorController::class,'contarDeAte']);
+
+Route::post('/calculadoraimc/calculadoraimc', [CalculadoraImcController::class,'calculadoraImc']);
