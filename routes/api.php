@@ -7,6 +7,7 @@ use App\Http\Controllers\CalculadoraController;
 use App\Http\Controllers\ContadorController;
 use App\Http\Controllers\CalculadoraImcController;
 
+use App\Http\Controllers\AgendaController;
 
 
 /*
@@ -24,8 +25,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/calculadora/calcular', [CalculadoraController::class,'calcular']);
+Route::post('/calculadora/calcular', [CalculadoraController::class, 'calcular']);
 
-Route::post('/contador/contarDeAte', [ContadorController::class,'contarDeAte']);
+Route::post('/contador/contarDeAte', [ContadorController::class, 'contarDeAte']);
 
-Route::post('/calculadoraimc/calculadoraimc', [CalculadoraImcController::class,'calculadoraImc']);
+Route::post('/calculadoraimc/calculadoraimc', [CalculadoraImcController::class, 'calculadoraImc']);
+
+Route::prefix('agenda')->group(function () {
+    Route::post('/salvar', [AgendaController::class, 'salvar']);
+    Route::get('/listar', [AgendaController::class, 'listar']);
+    Route::get('/lerUm/{id}', [AgendaController::class, 'lerUm']);
+    Route::delete('/deletar/{id}', [AgendaController::class, 'deletar']);
+    Route::patch('/atualizarparcial/{id}', [AgendaController::class, 'atualizarParcial']);
+});
