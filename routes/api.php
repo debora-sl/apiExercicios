@@ -9,6 +9,8 @@ use App\Http\Controllers\CalculadoraImcController;
 
 use App\Http\Controllers\AgendaController;
 
+use App\Http\Controllers\PJController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +39,12 @@ Route::prefix('agenda')->group(function () {
     Route::get('/lerUm/{id}', [AgendaController::class, 'lerUm']);
     Route::delete('/deletar/{id}', [AgendaController::class, 'deletar']);
     Route::patch('/atualizarparcial/{id}', [AgendaController::class, 'atualizarParcial']);
+});
+
+Route::prefix('pj')->group(function () {
+    Route::post('/salvar', [PJController::class, 'salvar']);
+    Route::get('/listar', [PJController::class, 'listar']);
+    Route::get('/listarUm/{id}', [PJController::class, 'listarUm']);
+    Route::patch('/atualizarParcial/{id}', [PJController::class, 'atualizarParcial']);
+    Route::delete('/deletar/{id}', [PJController::class, 'deletar']);
 });
