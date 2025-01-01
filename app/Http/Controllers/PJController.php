@@ -11,7 +11,7 @@ class PJController extends Controller
     public function salvar(Request $request)
     {
         $pj = new PJ();
-        $pj->razao_social = $request->razao_social;
+        $pj->razaoSocial = $request->razaoSocial;
         $pj->cnpj = $request->cnpj;
         $pj->created_by = 1;
 
@@ -47,8 +47,8 @@ class PJController extends Controller
     {
         $pj = PJ::where('id', $id)->first();
 
-        if (isset($request->razao_social)) {
-            $pj->razao_social = $request->razao_social;
+        if (isset($request->razaoSocial)) {
+            $pj->razaoSocial = $request->razaoSocial;
         }
         if (isset($request->cnpj)) {
             $pj->cnpj = $request->cnpj;
